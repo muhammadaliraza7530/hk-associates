@@ -10,6 +10,7 @@ import { AnimatedCounter } from "@/components/aaa/AnimatedCounter";
 import { celebrate } from "@/components/aaa/confetti";
 import { ProjectsCarousel } from "@/components/aaa/ProjectsCarousel";
 import { ClientsCarousel } from "@/components/aaa/ClientsCarousel";
+import VideoHero from "@/components/aaa/VideoHero";
 import { SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
@@ -416,6 +417,7 @@ function Index() {
   return (
     <SiteShell>
       <Hero />
+      <VideoHero />
       <Marquee />
       <Story />
       <Services />
