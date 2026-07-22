@@ -58,7 +58,7 @@ export default function VideoHero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
+    <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8 pb-5">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 flex justify-center">
         {/* Wrapper with theme-matched ambient shadow and double glowing border */}
         <div className="group relative max-h-[75vh] max-w-full rounded-[2.5rem] p-[2px] bg-gradient-to-b from-sky-400/40 via-blue-600/20 to-sky-500/10 shadow-[0_20px_70px_rgba(14,165,233,0.25)] transition-all duration-500 hover:shadow-[0_25px_90px_rgba(14,165,233,0.4)]">
