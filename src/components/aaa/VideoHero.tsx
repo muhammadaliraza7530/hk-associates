@@ -60,21 +60,20 @@ export default function VideoHero() {
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 flex justify-center">
-        {/*
-          Changes made:
-          1. Outer container is borderless with no rounded shape (just standard background).
-          2. Video wrapper uses `inline-block` / `max-h-[75vh]` so it snaps tightly to the video frame.
-          3. Rounded corners & borders are directly on the video container so the video itself is rounded.
-        */}
-        <div className="relative max-h-[75vh] max-w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_22px_80px_rgba(0,0,0,0.45)] [isolation:isolate] [transform:translateZ(0)]">
-          <video
-            ref={videoRef}
-            src="/video/mainSectionVideo.mp4"
-            playsInline
-            muted
-            preload="auto"
-            className="h-[75vh] w-auto max-w-full object-contain rounded-[2.5rem] block"
-          />
+        {/* Wrapper with theme-matched ambient shadow and double glowing border */}
+        <div className="group relative max-h-[75vh] max-w-full rounded-[2.5rem] p-[2px] bg-gradient-to-b from-sky-400/40 via-blue-600/20 to-sky-500/10 shadow-[0_20px_70px_rgba(14,165,233,0.25)] transition-all duration-500 hover:shadow-[0_25px_90px_rgba(14,165,233,0.4)]">
+          
+          {/* Inner Video Container */}
+          <div className="relative w-full h-full overflow-hidden rounded-[2.4rem] bg-slate-950 [isolation:isolate] [transform:translateZ(0)]">
+            <video
+              ref={videoRef}
+              src="/video/mainSectionVideo.mp4"
+              playsInline
+              muted
+              preload="auto"
+              className="h-[75vh] w-auto max-w-full object-contain rounded-[2.4rem] block"
+            />
+          </div>
         </div>
       </div>
     </section>
