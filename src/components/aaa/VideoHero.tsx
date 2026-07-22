@@ -65,13 +65,13 @@ export default function VideoHero() {
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="relative rounded-2xl overflow-hidden w-full h-[65vh] min-h-[500px] sm:h-auto sm:aspect-video sm:min-h-0 flex items-center justify-center shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden w-full h-[65vh] min-h-[500px] sm:h-auto sm:aspect-video sm:min-h-0 flex items-center justify-center bg-black border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
           <video
             ref={videoRef}
             src="/video/mainSectionVideo.mp4"
             playsInline
             preload="auto"
-            className="w-full h-full object-contain rounded-2xl"
+            className="w-full h-full object-cover rounded-3xl"
           />
         </div>
       </div>
