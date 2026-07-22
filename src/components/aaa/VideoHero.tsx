@@ -12,7 +12,6 @@ export default function VideoHero() {
         v.muted = false;
         v.play().catch(() => {});
       }
-      // Remove listener after first interaction
       window.removeEventListener("click", handleFirstUserInteraction);
       window.removeEventListener("touchstart", handleFirstUserInteraction);
     };
@@ -31,31 +30,27 @@ export default function VideoHero() {
     const el = containerRef.current;
     if (!v || !el) return;
 
-    // Intersection Observer to handle scroll-based play/pause with voice
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            // Unmute initially to attempt playing with sound
             v.muted = false;
             const p = v.play();
 
             if (p && typeof p.then === "function") {
               p.catch(() => {
-                // If browser blocks unmuted autoplay, play muted first (fallback)
                 v.muted = true;
                 v.play().catch(() => {});
               });
             }
           } else {
-            // Pause video and mute audio when scrolled out of view
             if (!v.paused) {
               v.pause();
             }
           }
         }
       },
-      { threshold: 0.5 } // 50% section view triggers play/pause
+      { threshold: 0.5 }
     );
 
     observer.observe(el);
@@ -65,13 +60,15 @@ export default function VideoHero() {
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="relative rounded-2xl overflow-hidden w-full h-[65vh] min-h-[500px] sm:h-auto sm:aspect-video sm:min-h-0 flex items-center justify-center shadow-bg-[oklch(0.98 0.005 255)] md-shadow-2xl rounded-2xl">
+        {/* Added [transform:translateZ(0)] and [isolation:isolate] to force layer clipping */}
+        <div className="relative w-full h-[65vh] min-h-[500px] sm:h-auto sm:aspect-video sm:min-h-0 flex items-center justify-center rounded-2xl overflow-hidden [transform:translateZ(0)] [isolation:isolate] shadow-2xl">
           <video
             ref={videoRef}
             src="/video/mainSectionVideo.mp4"
             playsInline
+            muted
             preload="auto"
-            className="w-full h-full object-contain rounded-2xl"
+            className="w-full h-full object-cover rounded-2xl"
           />
         </div>
       </div>
