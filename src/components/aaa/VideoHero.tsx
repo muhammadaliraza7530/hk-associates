@@ -59,26 +59,22 @@ export default function VideoHero() {
 
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 flex justify-center">
         {/*
-          Key Fixes:
-          1. Removed rigid h-[65vh] / min-h-[500px] that was forcing video stretching.
-          2. Added aspect-video and h-auto so the box perfectly matches normal video dimensions.
-          3. Added isolate & transform properties to fix WebKit border-radius glitches.
+          Changes made:
+          1. Outer container is borderless with no rounded shape (just standard background).
+          2. Video wrapper uses `inline-block` / `max-h-[75vh]` so it snaps tightly to the video frame.
+          3. Rounded corners & borders are directly on the video container so the video itself is rounded.
         */}
-        <div className="relative w-full h-auto aspect-video flex items-center justify-center">
-          <div className="absolute inset-0 rounded-[2rem] border border-[oklch(0.78_0.14_255)]/20 bg-[rgba(16,16,18,0.45)] shadow-[0_28px_120px_rgba(0,0,0,0.45)]" />
-          
-          <div className="relative w-full h-full overflow-hidden rounded-[2rem] border border-white/10 bg-black/[0.35] shadow-[0_22px_80px_rgba(0,0,0,0.35)] [isolation:isolate] [transform:translateZ(0)]">
-            <video
-              ref={videoRef}
-              src="/video/mainSectionVideo.mp4"
-              playsInline
-              muted
-              preload="auto"
-              className="w-full h-full object-contain rounded-[2rem]"
-            />
-          </div>
+        <div className="relative max-h-[75vh] max-w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_22px_80px_rgba(0,0,0,0.45)] [isolation:isolate] [transform:translateZ(0)]">
+          <video
+            ref={videoRef}
+            src="/video/mainSectionVideo.mp4"
+            playsInline
+            muted
+            preload="auto"
+            className="h-[75vh] w-auto max-w-full object-contain rounded-[2.5rem] block"
+          />
         </div>
       </div>
     </section>
