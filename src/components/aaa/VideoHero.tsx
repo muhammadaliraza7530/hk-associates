@@ -65,7 +65,7 @@ export default function VideoHero() {
   return (
     <section ref={containerRef} className="relative overflow-hidden pt-6 sm:pt-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="relative rounded-2xl overflow-hidden w-full aspect-video flex items-center justify-center ">
+        <div className="relative rounded-2xl overflow-hidden w-full h-[65vh] min-h-[500px] sm:h-auto sm:aspect-video sm:min-h-0 flex items-center justify-center shadow-2xl">
           <video
             ref={videoRef}
             src="/video/mainSectionVideo.mp4"
